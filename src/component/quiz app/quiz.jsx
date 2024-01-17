@@ -8,7 +8,7 @@ import fail from './../result logo/fail.gif'
 function Quiz() {
   const [timer, setTimer] = useState(14);
   const [timerColor, setTimerColor] = useState({
-    color : 'blue'
+    color : 'green'
   })
   const [questions, setQuestions] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -36,12 +36,23 @@ function Quiz() {
     }, 1000);
     return () => clearInterval(intervalId);
   })
+  
+  useEffect(()=>{
+    if(timer <= 5){
+      setTimerColor({
+        color : 'red'
+      })
+    }
+  },[timer])
 
 
   function quizTimer(){
     if(timer < 1 && questionIndex < questions.length - 1){
       setQuestionIndex(questionIndex + 1)
       setTimer(14)
+      setTimerColor({
+        color : 'green'
+      })
     }
     else if(questionIndex >= 9 && timer < 1){
      quizResult()

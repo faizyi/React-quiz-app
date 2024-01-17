@@ -108,6 +108,9 @@ function Quiz() {
     if (questionIndex < questions.length - 1) {
       setQuestionIndex(questionIndex + 1)
       setTimer(14)
+      setTimerColor({
+        color : 'green'
+      })
     } else {
       quizResult()
     }
